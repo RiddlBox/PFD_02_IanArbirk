@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController2D controller;
-    public float runspeed = 40f;
+    public float runSpeed = 40f;
     float horizontalMove = 0f;
-    //12:21 https://www.youtube.com/watch?v=dwcT-Dch0bA 
+    // 12:21 https://www.youtube.com/watch?v=dwcT-Dch0bA 
 
 
 
@@ -20,10 +20,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalMove = Input.rawGetAxisRaw("Horizontal");
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
     }
-    void FixedUpdate ()
+    void FixedUpdate () // Fixed update ideal for physics. Called a fixed amount of time pr. sec
     {
-        controller.Move(horizontalMove, false, false);
+        controller.Move(horizontalMove * Time.fixedDeltaTime, false, false); // Moving the character 
     }
 }
